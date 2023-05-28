@@ -1,0 +1,217 @@
+openapi: 3.0.0
+x-stoplight:
+  id: 2u3g8asx0q7pm
+info:
+  title: Library
+  version: '1.0'
+  description: Rest microservice used for managing a library of books
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /api/v1/book:
+    get:
+      summary: Get all books
+      tags:
+        - Library
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          description: Not Found
+      operationId: get-api-v1-books
+      description: Retrieve the complete list of books
+    post:
+      summary: Create book
+      operationId: post-api-v1-books
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      description: Create a book
+      tags:
+        - Library
+    parameters: []
+  '/api/v1/book/{id}':
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        required: true
+        description: Book identifier
+    get:
+      summary: Get a book
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '404':
+          description: Not Found
+      operationId: get-api-v1-book-id
+      description: Retrieve a book
+      tags:
+        - Library
+    put:
+      summary: Update a book
+      operationId: put-api-v1-book-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          description: Not Found
+      description: Update a book
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      tags:
+        - Library
+    delete:
+      summary: Delete a book
+      operationId: delete-api-v1-book-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          description: Not Found
+      description: Delete a book
+      tags:
+        - Library
+components:
+  schemas:
+    Book:
+      title: Book
+      x-stoplight:
+        id: qwsf8anpxv69s
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        authors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Author'
+        location:
+          $ref: '#/components/schemas/Location'
+      required:
+        - name
+        - authors
+        - location
+    Author:
+      title: Author
+      x-stoplight:
+        id: 4fjlvbwrhu3s0
+      type: object
+      properties:
+        firstname:
+          type: string
+        lastname:
+          type: string
+    Location:
+      title: Location
+      x-stoplight:
+        id: wpbrj4ygajlre
+      type: object
+      properties:
+        row:
+          type: string
+        shelf:
+          type: string
+    BadRequest:
+      title: BadRequest
+      x-stoplight:
+        id: kn2k1gduw9bf5
+      type: object
+      properties:
+        id:
+          type: string
+      description: Response to wrong values due to validations.
+    IdResponse:
+      title: IdResponse
+      x-stoplight:
+        id: 1pxiwgjs4tg4n
+      type: object
+      properties:
+        id:
+          type: integer
+  responses:
+    BadRequest:
+      description: Request is not correct. This may be due to validations or other errors
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                $ref: '#/components/schemas/BadRequest'
+            required:
+              - id
+    IdUpdateResponse:
+      description: Returns the ID of the affected object
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+            required:
+              - id
+    IdDeleteResponse:
+      description: Returns the ID of the deleted object
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+            required:
+              - id
+    IdResponse:
+      description: Returns the ID of the deleted object
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                $ref: '#/components/schemas/IdResponse'
+            required:
+              - id
