@@ -1,8 +1,8 @@
 package com.dcgteam.training.library.mapper;
 
 import com.dcgteam.training.library.entity.BookEntity;
+import main.java.com.dcgteam.training.library.model.Book;
 import org.modelmapper.ModelMapper;
-import com.dcgteam.training.library.model.Book;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,9 +12,8 @@ public class MapperUtils {
 
 
     public Book getBook(BookEntity bookEntity){
-       Book model = modelMapper.map(bookEntity, Book.class);
 
-        return model;
+        return modelMapper.map(bookEntity, Book.class);
     }
 
 }

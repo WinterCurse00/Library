@@ -1,7 +1,9 @@
 package com.dcgteam.training.library.controller;
 
-import com.dcgteam.training.library.model.Book;
-import com.dcgteam.training.library.model.IdResponse;
+import com.dcgteam.training.library.mapper.MapperUtils;
+import main.java.com.dcgteam.training.library.api.LibraryApi;
+import main.java.com.dcgteam.training.library.model.Book;
+import main.java.com.dcgteam.training.library.model.IdResponse;
 import com.dcgteam.training.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import java.util.List;
 
 @Controller
-public class LibraryController implements com.dcgteam.training.library.api.LibraryApi {
+public class LibraryController implements LibraryApi {
 
     @Autowired
     BookService bookService;
@@ -27,7 +29,7 @@ public class LibraryController implements com.dcgteam.training.library.api.Libra
     }
 
     @Override
-    public ResponseEntity<List<Book>> getApiV1Books() {
+    public ResponseEntity<List<MapperUtils>> getApiV1Books() {
 
 
         return ResponseEntity.ok(bookService.getAll());

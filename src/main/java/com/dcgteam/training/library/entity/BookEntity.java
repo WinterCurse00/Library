@@ -3,8 +3,9 @@ package com.dcgteam.training.library.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import com.dcgteam.training.library.model.Author;
-import com.dcgteam.training.library.model.Location;
+import main.java.com.dcgteam.training.library.model.Author;
+import main.java.com.dcgteam.training.library.model.Location;
+
 
 import javax.persistence.*;
 
