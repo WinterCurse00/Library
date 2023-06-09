@@ -140,7 +140,7 @@
                             <generateModelTests>false</generateModelTests>
                             <generateModelDocumentation>false</generateModelDocumentation>
                             <configOptions>
-                                <title>RapidTRANSFORM API</title>
+                                <title>Library</title>
                                 <basePackage>com.dcgteam.training.library</basePackage>
                                 <modelPackage>com.dcgteam.training.library.model</modelPackage>
                                 <apiPackage>com.dcgteam.training.library.api</apiPackage>

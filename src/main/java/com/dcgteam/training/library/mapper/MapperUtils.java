@@ -1,7 +1,7 @@
 package com.dcgteam.training.library.mapper;
 
 import com.dcgteam.training.library.entity.BookEntity;
-import main.java.com.dcgteam.training.library.model.Book;
+import com.dcgteam.training.library.model.Book;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

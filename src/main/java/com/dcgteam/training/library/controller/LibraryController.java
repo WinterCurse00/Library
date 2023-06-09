@@ -1,17 +1,18 @@
 package com.dcgteam.training.library.controller;
 
+import com.dcgteam.training.library.api.LibraryApi;
 import com.dcgteam.training.library.mapper.MapperUtils;
-import main.java.com.dcgteam.training.library.api.LibraryApi;
-import main.java.com.dcgteam.training.library.model.Book;
-import main.java.com.dcgteam.training.library.model.IdResponse;
+import com.dcgteam.training.library.model.Book;
+import com.dcgteam.training.library.model.IdResponse;
 import com.dcgteam.training.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class LibraryController implements LibraryApi {
 
     @Autowired
@@ -29,11 +30,16 @@ public class LibraryController implements LibraryApi {
     }
 
     @Override
-    public ResponseEntity<List<MapperUtils>> getApiV1Books() {
-
-
-        return ResponseEntity.ok(bookService.getAll());
+    public ResponseEntity<List<Book>> getApiV1Books() {
+        return null;
     }
+
+//    @Override
+//    public ResponseEntity<List<MapperUtils>> getApiV1Books() {
+//
+//
+//        return ResponseEntity.ok(bookService.getAll());
+//    }
 
     @Override
     public ResponseEntity<IdResponse> postApiV1Books(Book book) {
