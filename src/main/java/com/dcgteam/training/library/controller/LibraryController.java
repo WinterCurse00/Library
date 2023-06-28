@@ -1,13 +1,12 @@
 package com.dcgteam.training.library.controller;
 
-import com.dcgteam.training.library.api.LibraryApi;
-import com.dcgteam.training.library.mapper.MapperUtils;
-import com.dcgteam.training.library.model.Book;
-import com.dcgteam.training.library.model.IdResponse;
+import main.java.com.dcgteam.training.library.api.LibraryApi;
+import main.java.com.dcgteam.training.library.model.Book;
+import main.java.com.dcgteam.training.library.model.IdResponse;
 import com.dcgteam.training.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -50,4 +49,10 @@ public class LibraryController implements LibraryApi {
     public ResponseEntity<IdResponse> putApiV1BookId(Integer id, Book book) {
         return null;
     }
+
+    @RequestMapping(value = "/test")
+    public static String Test(){
+        return "Salut";
+    }
+
 }
